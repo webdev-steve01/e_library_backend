@@ -1,14 +1,17 @@
-from pydantic import BaseModel, EmailStr, Field
-
-class UserBase(BaseModel):
-    username: str = Field(..., min_length=3, max_length=50)
-    email: EmailStr
-    role: str = Field(..., regex="^(student|admin)$")
+from pydantic import BaseModel, Field
+from datetime import datetime
+from database import db
 
 
-class UserCreate(UserBase):
-    password: str = Field(..., min_length=8)
+# Basic Pydantic models
+class Book(BaseModel):
+    id: int
+    title: str
+    author: str
+    description: str
+    image: str
+    link: str
 
-
-class UserResponse(UserBase):
-    id: str
+async def check_book_exists(book_id: int) -> bool:
+    book = db.books.find_one({'id': book_id})
+    return book is not None

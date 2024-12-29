@@ -1,2 +1,1 @@
-import secrets
-print(secrets.token_hex(32))
+# nothing to see here

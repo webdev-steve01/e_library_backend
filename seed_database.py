@@ -1,10 +1,10 @@
 from pymongo import MongoClient
 import os
 
-connection_string = os.environ.get('DATABASE_URL')
+connection_string = os.environ.get('PASSWORD')
 
 # MongoDB connection
-client = MongoClient('connection_string')
+client = MongoClient('mongodb+srv://osesojehssp:cloudshelfpassword@cloudshelf.05kcj.mongodb.net/?retryWrites=true&w=majority&appName=CloudShelf')
 db = client['elibrary']
 
 def seed_books():

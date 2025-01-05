@@ -48,7 +48,7 @@ function Sidebar() {
         <SidebarElements
           image={settings}
           text="Settings"
-          link="./Home/Settings"
+          link="/Home/Settings"
         />
       </section>
     </div>

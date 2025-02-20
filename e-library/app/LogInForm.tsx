@@ -125,7 +125,7 @@ function LogInForm() {
           <input
             type="text"
             name="name"
-            placeholder="enter your matric number"
+            placeholder="enter your matric number e.g (2022-11094)"
             id="matriculation"
             onChange={(e) => handleMatric(e)}
             className="border px-2 py-1 rounded-md border-[#D9D9D9] "

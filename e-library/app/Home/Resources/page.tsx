@@ -97,7 +97,9 @@ function page() {
   });
   useEffect(() => {
     const fetchData = async () => {
-      await fetch("http://localhost:8000/explore-resources")
+      await fetch(
+        "https://e-library-backend-ry8t.onrender.com/explore-resources"
+      )
         .then((res) => res.json())
         .then((data: book[]) => {
           setResources(data);
@@ -114,7 +116,7 @@ function page() {
   useEffect(() => {
     const handleBorowedBooks = async (book_id: number) => {
       await fetch(
-        `http://localhost:8000/borrow-book/${matricNumber}/${book_id}`,
+        `https://e-library-backend-ry8t.onrender.com/borrow-book/${matricNumber}/${book_id}`,
         { method: "POST" } // Ensure you're using the correct HTTP method
       )
         .then(() => {
@@ -141,7 +143,7 @@ function page() {
       if (matricNumber) {
         try {
           const res = await fetch(
-            `http://127.0.0.1:8000/borrowed-books/${matricNumber}`
+            `https://e-library-backend-ry8t.onrender.com/borrowed-books/${matricNumber}`
           );
           if (!res.ok) {
             throw new Error(`Error: ${res.status}`);

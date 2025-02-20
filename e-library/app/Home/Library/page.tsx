@@ -105,7 +105,7 @@ function page() {
       if (matricNumber) {
         try {
           const res = await fetch(
-            `http://127.0.0.1:8000/borrowed-books/${matricNumber}`
+            `https://e-library-backend-ry8t.onrender.com/borrowed-books/${matricNumber}`
           );
           if (!res.ok) {
             throw new Error(`Error: ${res.status}`);
@@ -129,7 +129,7 @@ function page() {
   useEffect(() => {
     const handleFavoriteBooks = async (user_id: string, book_id: number) => {
       await fetch(
-        `http://localhost:8000/add-favorite/${user_id}/${book_id}
+        `https://e-library-backend-ry8t.onrender.com/add-favorite/${user_id}/${book_id}
 `,
         { method: "POST" } // Ensure you're using the correct HTTP method
       )
@@ -155,7 +155,7 @@ function page() {
   useEffect(() => {
     const handleHistoryBooks = async (user_id: string, book_id: number) => {
       await fetch(
-        `http://localhost:8000/add-to-history/${user_id}/${book_id}
+        `https://e-library-backend-ry8t.onrender.com/add-to-history/${user_id}/${book_id}
 `,
         { method: "POST" } // Ensure you're using the correct HTTP method
       )
@@ -183,7 +183,7 @@ function page() {
       if (matricNumber) {
         try {
           const res = await fetch(
-            `http://127.0.0.1:8000/favorites/${matricNumber}`
+            `https://e-library-backend-ry8t.onrender.com/favorites/${matricNumber}`
           );
           if (!res.ok) {
             throw new Error(`Error: ${res.status}`);

@@ -1,175 +1,29 @@
-# E-Library API Documentation
+# CloudShelf
 
-A simple backend API for an e-library application built with FastAPI and MongoDB.
+CloudShelf is an e-library platform built as a group project for our school. It enables users to:
 
-## Base URL
-```
-http://localhost:8000
-```
+- Browse a collection of books
+- Add books to their library
+- Mark books as favorites
+- Read books
+- Keep track of their reading history
 
-## Endpoints
+## Tech Stack
 
-### Get All Books
-```http
-GET /explore-resources
-```
-Returns all books in the library.
+- **Frontend:** Next.js
+- **Backend:** FastAPI (Python 3)
+- **Database:** MongoDB
+- **Authentication:** Firebase
 
-**Response** `200 OK`
-```json
-[
-  {
-    "id": 1,
-    "title": "Book Title",
-    "author": "Author Name",
-    "description": "Book Description",
-    "image": "Image URL",
-    "link": "Book Link"
-  }
-]
-```
+## Limitations
 
-### Get Borrowed Books
-```http
-GET /borrowed-books
-```
-Returns all currently borrowed books.
+Currently, the platform lacks the ability to remove books from favorites, history, or library due to limitations in the backend endpoints. Future development will address these issues.
 
-**Response** `200 OK`
-```json
-[
-  {
-    "id": 1,
-    "title": "Book Title",
-    "author": "Author Name",
-    "description": "Book Description",
-    "image": "Image URL",
-    "link": "Book Link"
-  }
-]
-```
+## Running the Backend Server
 
-### Get Favorite Books
-```http
-GET /favorites
-```
-Returns all books marked as favorites.
+To run the backend server, follow these steps:
 
-**Response** `200 OK`
-```json
-[
-  {
-    "id": 1,
-    "title": "Book Title",
-    "author": "Author Name",
-    "description": "Book Description",
-    "image": "Image URL",
-    "link": "Book Link"
-  }
-]
-```
-
-### Get History
-```http
-GET /history
-```
-Returns all books in reading history.
-
-**Response** `200 OK`
-```json
-[
-  {
-    "id": 1,
-    "title": "Book Title",
-    "author": "Author Name",
-    "description": "Book Description",
-    "image": "Image URL",
-    "link": "Book Link"
-  }
-]
-```
-
-### Borrow a Book
-```http
-POST /borrow-book/{book_id}
-```
-Marks a book as borrowed.
-
-**Response** `200 OK`
-```json
-{
-  "message": "Book borrowed successfully"
-}
-```
-
-**Errors**
-- `404` Book not found
-- `400` Book already borrowed
-
-### Add to Favorites
-```http
-POST /add-favorite/{book_id}
-```
-Adds a book to favorites.
-
-**Response** `200 OK`
-```json
-{
-  "message": "Book added to favorites"
-}
-```
-
-**Errors**
-- `404` Book not found
-- `400` Book already in favorites
-
-### Add to History
-```http
-POST /add-to-history/{book_id}
-```
-Adds a book to reading history.
-
-**Response** `200 OK`
-```json
-{
-  "message": "Book added to history"
-}
-```
-
-**Errors**
-- `404` Book not found
-
-### Add New Book
-```http
-POST /add-book
-```
-Adds a new book to the library.
-
-**Request Body**
-```json
-{
-  "id": 1,
-  "title": "Book Title",
-  "author": "Author Name",
-  "description": "Book Description",
-  "image": "Image URL",
-  "link": "Book Link"
-}
-```
-
-**Response** `200 OK`
-```json
-{
-  "message": "Book added successfully"
-}
-```
-
-**Errors**
-- `400` Book with this ID already exists
-
-## Quick Start
-
-1. Make sure MongoDB is running locally or on the cloud
+1. Ensure MongoDB is running locally or on the cloud.
 2. Install dependencies:
    ```bash
    pip install fastapi uvicorn pymongo
@@ -179,8 +33,29 @@ Adds a new book to the library.
    ```bash
    uvicorn main:app --reload
    ```
-4. API will be available at `http://localhost:8000`
-5. Interactive API documentation available at `http://localhost:8000/docs`
+4. The API will be available at `http://localhost:8000`
+5. Interactive API documentation can be accessed at `http://localhost:8000/docs`
 
-## Note
-This is a simple prototype implementation without authentication. All endpoints are public and don't require any authorization headers.
+## Running the Frontend Server
+
+Navigate to the `e-library` folder and start the frontend server:
+
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+2. Start the server:
+   ```bash
+   npm run dev
+   ```
+3. The frontend will be available at `http://localhost:3000`
+
+## Future Enhancements
+
+- Implement remove functionality for favorites, history, and library.
+- Improve UI/UX.
+- Add more authentication features.
+
+---
+
+Developed as a school project by our team. 🚀

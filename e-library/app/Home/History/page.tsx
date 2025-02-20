@@ -98,7 +98,7 @@ function page() {
       if (matricNumber) {
         try {
           const res = await fetch(
-            `http://127.0.0.1:8000/history/${matricNumber}`
+            `https://e-library-backend-ry8t.onrender.com/history/${matricNumber}`
           );
           if (!res.ok) {
             throw new Error(`Error: ${res.status}`);

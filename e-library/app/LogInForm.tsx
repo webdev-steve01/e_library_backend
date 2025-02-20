@@ -103,6 +103,7 @@ function LogInForm() {
           //  setLoading(false);
           // setMatricExport(matric);
           router.push("./Home");
+          console.log(name);
         })
         .catch((err) => {
           alert(err);

@@ -1,6 +1,6 @@
 import SearchBar from "../SearchBar";
 import Hero from "./Hero";
-import Sidebar from "./Sidebar";
+// import Sidebar from "./Sidebar";
 
 function page() {
   return (

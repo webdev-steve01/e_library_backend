@@ -15,7 +15,6 @@ import { onAuthStateChanged, getAuth, User } from "firebase/auth";
 import { getDocs, collection } from "firebase/firestore";
 import { app, db } from "../firebase";
 import { useMatric } from "../context/MatricContext";
-import { link } from "fs";
 
 interface book {
   id: number;
@@ -75,7 +74,6 @@ function Hero() {
   const [bookID, setBookID] = useState<number>();
   const [library, setLibrary] = useState<Array<number>>([]);
   const [oldlibrary, setOldLibrary] = useState<Array<book>>([]);
-  const [added, setAdded] = useState<boolean>(false);
   const { matricNumber, setMatricNumber } = useMatric();
   const [test, setTest] = useState<boolean>(false);
   // alert(matricNumber);
@@ -112,6 +110,9 @@ function Hero() {
           if (newBook) {
             setOldLibrary((prev) => [...prev, newBook]);
           }
+          if (library) {
+            console.log("");
+          }
         })
         .catch((err) => {
           alert(err);
@@ -120,7 +121,7 @@ function Hero() {
     if (bookID) {
       handleBorowedBooks(String(matricNumber), bookID);
     }
-  }, [test]);
+  }, [test, bookID, matricNumber, resources, library]);
 
   useEffect(() => {
     const checkLibrary = async () => {
@@ -143,7 +144,7 @@ function Hero() {
     };
 
     checkLibrary(); // Replace 123 with the actual `user_id`
-  }, [matricNumber, test]);
+  }, [matricNumber, test, bookID]);
 
   useEffect(() => {
     async function fetchData() {
@@ -155,13 +156,6 @@ function Hero() {
     fetchData();
   }, []);
 
-  const isAdded = (book_id: number) => {
-    if (library) {
-      for (let i: number = 0; i <= library?.length; i++) {
-        return library[i] === book_id;
-      }
-    }
-  };
   const isPreviouslyAdded = (book_id: number): boolean => {
     return oldlibrary?.some((book) => book.id === book_id);
   };
